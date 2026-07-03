@@ -1,0 +1,76 @@
+# ROM — Offline Emergency Resource Library
+# Full offline stack: content library (Kiwix) + local LLM (Ollama) + vector DB (Qdrant)
+# + the Rom RAG assistant. Nothing here requires the internet at runtime.
+#
+#   Start:  ./scripts/03-start.sh   (or: docker compose up -d)
+#   Index:  docker compose exec rom python ingest.py
+
+services:
+  # ---- Content library: serves every .zim file in ./content/zim over HTTP ----
+  kiwix:
+    image: ghcr.io/kiwix/kiwix-tools:latest
+    container_name: rom-kiwix
+    restart: unless-stopped
+    # kiwix-serve auto-discovers all *.zim in the mounted directory.
+    command: >
+      sh -c "kiwix-serve --port=8090 --address=0.0.0.0 --library /data/library.xml
+             || kiwix-serve --port=8090 --address=0.0.0.0 /data/*.zim"
+    volumes:
+      - ./content/zim:/data:ro
+    ports:
+      - "${KIWIX_PORT:-8090}:8090"
+
+  # ---- Local LLM runtime ("Rom"'s brain) ----
+  ollama:
+    image: ollama/ollama:latest
+    container_name: rom-ollama
+    restart: unless-stopped
+    volumes:
+      - ollama-models:/root/.ollama
+    ports:
+      - "${OLLAMA_PORT:-11434}:11434"
+    # To use an NVIDIA GPU (Tier 3), install nvidia-container-toolkit on the host
+    # and uncomment the block below.
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: all
+    #           capabilities: [gpu]
+
+  # ---- Vector database for retrieval-augmented generation ----
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: rom-qdrant
+    restart: unless-stopped
+    volumes:
+      - qdrant-data:/qdrant/storage
+    ports:
+      - "${QDRANT_PORT:-6333}:6333"
+
+  # ---- The Rom assistant: RAG API + chat web UI ----
+  rom:
+    build: ./rom
+    container_name: rom-assistant
+    restart: unless-stopped
+    depends_on:
+      - ollama
+      - qdrant
+      - kiwix
+    environment:
+      OLLAMA_URL: "http://ollama:11434"
+      QDRANT_URL: "http://qdrant:6333"
+      KIWIX_URL: "http://kiwix:8090"
+      KIWIX_PORT_PUBLIC: "${KIWIX_PORT:-8090}"
+      ROM_MODEL: "${ROM_MODEL:-llama3.1:8b}"
+      EMBED_MODEL: "${EMBED_MODEL:-nomic-embed-text}"
+      TOP_K: "${TOP_K:-6}"
+    volumes:
+      - ./content:/content:ro     # library sources for ingestion (read-only)
+    ports:
+      - "${ROM_PORT:-8080}:8080"
+
+volumes:
+  ollama-models:
+  qdrant-data:

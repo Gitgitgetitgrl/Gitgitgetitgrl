@@ -1,0 +1,14 @@
+# Never commit downloaded content or private data (licensing + size + privacy)
+content/**
+!content/**/.gitkeep
+
+# Local env / secrets
+.env
+
+# Private personal/legal documents
+content/private/**
+
+# Build artifacts (the PDF is committed; the intermediate HTML is not)
+docs/operation-manual.html
+__pycache__/
+*.pyc

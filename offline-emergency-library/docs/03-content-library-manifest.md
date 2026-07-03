@@ -103,6 +103,11 @@ You **cannot** mirror YouTube or Pinterest wholesale offline. The realistic appr
 | Curated how-to videos | `yt-dlp` (while online) | you choose | **[NICE]** |
 | Jellyfin media server (container) | Docker | app only | **[NICE]** |
 
+See [`05-media-library.md`](05-media-library.md) for the full curation workflow and the
+starter category list (tactical, ancient history/tech, minerals, DIY tech builds, gardening,
+survival, homestead cooking, kids' shows, and more), and
+[`06-radio-comms.md`](06-radio-comms.md) for Meshtastic + RTL-SDR comms hardware.
+
 ## 9. Personal & legal (do this, everyone forgets it)
 
 | Content | Priority |

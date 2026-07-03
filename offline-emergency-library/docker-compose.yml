@@ -71,6 +71,43 @@ services:
     ports:
       - "${ROM_PORT:-8080}:8080"
 
+  # ---- Optional: offline media server for curated videos/images ----
+  # Start with:  docker compose --profile media up -d jellyfin   (http://<box>:8096)
+  # Populate content/media/ first via scripts/05-download-media.sh.
+  jellyfin:
+    image: jellyfin/jellyfin:latest
+    container_name: rom-jellyfin
+    restart: unless-stopped
+    profiles: ["media"]
+    volumes:
+      - jellyfin-config:/config
+      - jellyfin-cache:/cache
+      - ./content/media:/media:ro
+    ports:
+      - "${JELLYFIN_PORT:-8096}:8096"
+
+  # ---- Optional: browser-based SDR receiver (needs an RTL-SDR dongle) ----
+  # Start with:  docker compose --profile radio up -d openwebrx    (http://<box>:8073)
+  # Uncomment the devices/privileged lines and plug in the dongle first. See docs/06.
+  openwebrx:
+    image: jketterl/openwebrx:latest
+    container_name: rom-openwebrx
+    restart: unless-stopped
+    profiles: ["radio"]
+    ports:
+      - "${OPENWEBRX_PORT:-8073}:8073"
+    volumes:
+      - openwebrx-config:/var/lib/openwebrx
+    # --- RTL-SDR USB passthrough: uncomment once the dongle is connected ---
+    # devices:
+    #   - "/dev/bus/usb:/dev/bus/usb"
+    # For a Meshtastic node wired to the box, pass its serial device to a script/container:
+    #   devices:
+    #     - "/dev/ttyUSB0:/dev/ttyUSB0"
+
 volumes:
   ollama-models:
   qdrant-data:
+  jellyfin-config:
+  jellyfin-cache:
+  openwebrx-config:

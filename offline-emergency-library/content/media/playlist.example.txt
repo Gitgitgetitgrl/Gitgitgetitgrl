@@ -1,0 +1,93 @@
+# ROM media curation list  ---  copy to playlist.txt and edit, then run scripts/05-download-media.sh
+#
+# One item per line:   Category | SOURCE
+#   SOURCE is either:
+#     - a full YouTube video / playlist / channel URL  (best: exact content you want)
+#     - ytsearchN:your search terms                     (grabs the top N results; robust)
+#   Category becomes the folder under content/media/<Category>/ (Jellyfin shows it as a collection)
+#
+# Lines starting with # are ignored. Delete anything you don't want; paste exact playlist
+# URLs for the best quality/selection. Video is large -- start small, add more later.
+#
+# ⚠️ PERSONAL USE ONLY. This content is copyrighted by its creators. Keep it on your own
+#    device for your household; do not redistribute or sell. See docs/04-licensing-and-legal.md.
+# --------------------------------------------------------------------------------------------
+
+# ---- Tactical ----
+Tactical | ytsearch8:tactical field craft basics
+Tactical | ytsearch5:tactical combat casualty care basics
+Tactical | ytsearch5:situational awareness training
+
+# ---- Ancient history & civilizations ----
+AncientHistory | ytsearch6:ancient civilizations documentary overview
+AncientHistory | ytsearch5:history of ancient mesopotamia egypt
+AncientHistory | ytsearch4:lost ancient cities documentary
+
+# ---- Ancient knowledge & technology ----
+AncientTech | ytsearch6:ancient technology and engineering explained
+AncientTech | ytsearch5:how ancient people built structures techniques
+AncientTech | ytsearch4:ancient tools and metallurgy
+
+# ---- Religious teachings ----
+Religious | ytsearch6:world religions explained teachings
+Religious | ytsearch5:comparative religion introduction
+
+# ---- Ancient mysteries & unexplained ("alien" / lost knowledge) ----
+AncientMysteries | ytsearch6:ancient mysteries megaliths documentary
+AncientMysteries | ytsearch5:ancient astronaut theory overview
+AncientMysteries | ytsearch4:unexplained ancient sites
+
+# ---- Minerals & natural elements ----
+Minerals | ytsearch6:rock and mineral identification guide
+Minerals | ytsearch5:practical uses of minerals and natural elements
+Minerals | ytsearch4:how to identify crystals in the field
+
+# ---- Security & protection ----
+Security | ytsearch6:home security and protection tips
+Security | ytsearch5:personal safety situational awareness
+
+# ---- Technology builds (DIY) ----
+TechBuilds | ytsearch6:homemade generator diy build
+TechBuilds | ytsearch6:diy water filter build clean water
+TechBuilds | ytsearch5:off grid solar power basics build
+TechBuilds | ytsearch4:diy electronics projects for beginners
+
+# ---- Gardening & seeds ----
+Gardening | ytsearch6:seed saving for beginners
+Gardening | ytsearch6:survival garden how to grow food
+Gardening | ytsearch4:composting basics
+
+# ---- Survival DIY ----
+SurvivalDIY | ytsearch8:survival skills shelter fire water
+SurvivalDIY | ytsearch5:bushcraft basics for beginners
+SurvivalDIY | ytsearch5:how to build emergency shelter
+
+# ---- Computer & online safety ----
+ComputerSafety | ytsearch6:online privacy and security basics
+ComputerSafety | ytsearch5:how to stay safe online cybersecurity beginners
+
+# ---- Homestead cooking ----
+HomesteadCooking | ytsearch6:homestead cooking from scratch
+HomesteadCooking | ytsearch5:food preservation canning basics
+HomesteadCooking | ytsearch4:cooking without electricity off grid
+
+# ---- Cooking for fun ----
+CookingForFun | ytsearch6:easy fun recipes to cook at home
+CookingForFun | ytsearch4:basic cooking techniques for beginners
+
+# ---- Kids: learning & shows (personal/family use) ----
+# Paste OFFICIAL channel/playlist URLs here for best quality; searches are a starting point.
+Kids | ytsearch6:Blippi educational videos for kids
+Kids | ytsearch6:Bluey official clips
+Kids | ytsearch6:StoryBots songs
+Kids | ytsearch6:Numberblocks full episodes
+Kids | ytsearch5:Twirlywoos official
+Kids | ytsearch5:Tayo the little bus english
+Kids | ytsearch5:Pixar Cars shorts
+
+# --------------------------------------------------------------------------------------------
+# IMAGES / INFOGRAPHICS (Pinterest-style). Handled by gallery-dl, saved to Infographics/.
+# Prefix the line with 'IMG |' and give a Pinterest board URL or any image-gallery URL.
+# Example (replace with your own boards):
+# IMG | https://www.pinterest.com/USERNAME/survival-infographics/
+# IMG | https://www.pinterest.com/USERNAME/gardening-charts/

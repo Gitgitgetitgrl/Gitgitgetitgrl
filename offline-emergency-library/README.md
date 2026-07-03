@@ -50,6 +50,11 @@ docker compose exec rom python ingest.py
 
 # 5. Turn the box into an offline Wi-Fi access point (optional but recommended)
 sudo ./scripts/01-setup-wifi-hotspot.sh
+
+# 6. (Optional) Curate an offline media library of videos/infographics, then serve it
+cp content/media/playlist.example.txt content/media/playlist.txt   # edit categories
+./scripts/05-download-media.sh                                     # while online
+docker compose --profile media up -d jellyfin
 ```
 
 Then from any device, join the `ROM-LIBRARY` Wi-Fi and open:
@@ -58,6 +63,8 @@ Then from any device, join the `ROM-LIBRARY` Wi-Fi and open:
 |--------------------|----------------------------------|
 | **Rom assistant**  | `http://10.42.0.1:8080/`         |
 | Kiwix library      | `http://10.42.0.1:8090/`         |
+| Media (Jellyfin)   | `http://10.42.0.1:8096/` *(optional `--profile media`)* |
+| SDR radio (OpenWebRX) | `http://10.42.0.1:8073/` *(optional `--profile radio`)* |
 | (via Ethernet/dev) | `http://<box-ip>:8080` / `:8090` |
 
 ## Documentation
@@ -68,6 +75,8 @@ Then from any device, join the `ROM-LIBRARY` Wi-Fi and open:
 | [`docs/02-hardware-bom-and-tiers.md`](docs/02-hardware-bom-and-tiers.md)   | 3 hardware tiers, full bill of materials, recommendation |
 | [`docs/03-content-library-manifest.md`](docs/03-content-library-manifest.md) | Prioritized content, sources, sizes |
 | [`docs/04-licensing-and-legal.md`](docs/04-licensing-and-legal.md)         | Redistribution / licensing notes |
+| [`docs/05-media-library.md`](docs/05-media-library.md)                     | Offline video/image library (Jellyfin + yt-dlp/gallery-dl) |
+| [`docs/06-radio-comms.md`](docs/06-radio-comms.md)                         | Off-grid comms: Meshtastic (send) + RTL-SDR (receive) |
 | [`docs/operation-manual.md`](docs/operation-manual.md)                     | Non-technical operator manual (also built to PDF) |
 
 Build the PDF manual:

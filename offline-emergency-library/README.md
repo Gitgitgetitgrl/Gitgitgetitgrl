@@ -79,6 +79,7 @@ Then from any device, join the `ROM-LIBRARY` Wi-Fi and open:
 | [`docs/06-radio-comms.md`](docs/06-radio-comms.md)                         | Off-grid comms: Meshtastic (send) + RTL-SDR (receive) |
 | [`docs/operation-manual.md`](docs/operation-manual.md)                     | Non-technical operator manual (also built to PDF) |
 | [`CONTRIBUTING.md`](CONTRIBUTING.md)                                       | Contributor setup + change checklist |
+| [`SECURITY.md`](SECURITY.md)                                               | Threat model + offline-device hardening checklist |
 
 Build the PDF manual:
 

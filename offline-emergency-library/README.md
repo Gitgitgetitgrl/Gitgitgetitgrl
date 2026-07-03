@@ -78,6 +78,7 @@ Then from any device, join the `ROM-LIBRARY` Wi-Fi and open:
 | [`docs/05-media-library.md`](docs/05-media-library.md)                     | Offline video/image library (Jellyfin + yt-dlp/gallery-dl) |
 | [`docs/06-radio-comms.md`](docs/06-radio-comms.md)                         | Off-grid comms: Meshtastic (send) + RTL-SDR (receive) |
 | [`docs/operation-manual.md`](docs/operation-manual.md)                     | Non-technical operator manual (also built to PDF) |
+| [`CONTRIBUTING.md`](CONTRIBUTING.md)                                       | Contributor setup + change checklist |
 
 Build the PDF manual:
 

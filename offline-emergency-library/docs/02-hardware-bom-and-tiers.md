@@ -99,3 +99,63 @@ The repo defaults (`.env.example`) are set for Tier 2. To change model per tier,
 - **Meshtastic/LoRa node** (~$30) if you want off-grid text comms between locations.
 - **RTL-SDR dongle** (~$30) to *receive* radio (NOAA weather, aircraft, ham) — pairs with the
   radio content pack.
+
+---
+
+## Recommended purchases (≤ $1,200 budget, 2026 street prices)
+
+Prices fluctuate — **verify current specs (especially RAM) and price before buying.** Avoid
+listings with made-up CPU model numbers (e.g. "Ryzen R2544"), fake resolutions ("1920P"), or
+Greek-letter titles ("Windοws") — those are low-quality/misleading listings.
+
+### ⭐ Option A — Best value: mini-PC + big SSD (recommended for off-grid)
+
+A mini-PC is the value sweet spot here: 32GB RAM, **very low power (9–25W)** which is ideal
+for running off a battery/solar station, silent, and cheap enough to leave budget for storage
+and power.
+
+| Item | Example | ~Cost |
+|------|---------|-------|
+| Mini-PC, Ryzen 7 8845HS, 32GB DDR5, 1TB SSD | Beelink SER8 / GMKtec K12 / Minisforum UM870 | $640–690 |
+| External 2TB USB SSD (full library + media) | any reputable brand | ~$120 |
+| Power station / DC UPS (off-grid runtime) | ~$150–250 | |
+| **Total** | | **~$900–1,050** |
+
+- Rom: `llama3.1:8b` at ~18–25 tokens/sec on the iGPU; quantized 13B usable. No discrete GPU.
+- Upgradeable to 64GB RAM later for bigger models.
+
+**`.env` settings for Option A** (CPU/iGPU, no GPU block):
+
+```ini
+ROM_MODEL=llama3.1:8b        # or phi3:mini for snappier, gemma2:2b for lightest
+EMBED_MODEL=nomic-embed-text
+TOP_K=6
+```
+
+Leave the `deploy:` GPU block in `docker-compose.yml` **commented out**.
+
+### Option B — GPU speed: RTX 4060 laptop (Tier 3)
+
+Fastest Rom in budget, plus a built-in screen and battery (self-contained). Costs more and
+draws more power; hunt for a **32GB** configuration — many at this price ship only 16GB.
+
+| Item | Example | ~Cost |
+|------|---------|-------|
+| Laptop, RTX 4060 (8GB VRAM), **32GB RAM**, 1TB | ASUS TUF / Acer Nitro / Lenovo LOQ class | $1,050–1,200 |
+
+- Rom: `qwen2.5:14b` GPU-accelerated; ~40–50 tokens/sec on 7–8B models.
+
+**`.env` settings for Option B** (GPU):
+
+```ini
+ROM_MODEL=qwen2.5:14b        # 8GB VRAM sweet spot; llama3.1:8b for more speed
+EMBED_MODEL=nomic-embed-text
+TOP_K=6
+```
+
+And **enable the GPU** in `docker-compose.yml`: uncomment the `deploy: resources: reservations:
+devices:` block under the `ollama` service, and run `scripts/00-install-host.sh` so the
+NVIDIA Container Toolkit is installed.
+
+> If you buy a 16GB (not 32GB) machine of either type, drop to a smaller model
+> (`ROM_MODEL=phi3:mini` or `gemma2:2b`) — see the Tier table above.

@@ -24,6 +24,10 @@ QA/Compliance → Listing → Approval → Upload.**
 9. **Human Approval** — mandatory gate, **no auto-publish**.
 10. **Upload** — via Upload Agent or manual KDP submission, using the approved packet only.
 11. **Post-launch tracking** — logged back into CHANGELOG/ARCHIVE tabs.
+12. **Advertising (Ada, Level 3)** — after launch, Ada runs the ads loop: auto-campaign
+    discovery → manual targeting → weekly optimization, tracked in `ads/templates/
+    AD_CAMPAIGNS.csv` and reviewed with `python ads/campaign_review.py`. Budget changes
+    need owner approval. See [`../ads/AGENT.md`](../ads/AGENT.md).
 
 ## One-command sanity run (placeholder art, no API/GPU)
 

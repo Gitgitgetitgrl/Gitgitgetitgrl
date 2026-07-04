@@ -1,0 +1,3 @@
+campaign_id,task_id,book_slug,campaign_name,ad_type,targeting,state,daily_budget_usd,bid_strategy,start_date,acos_target_pct,acos_actual_pct,tacos_pct,ctr_pct,impressions,clicks,spend_usd,sales_usd,orders,last_review_date,next_review_date,status_note,next_action,approved_by
+ads-001,book-42,cute-farm-animals-ages-4-8,farm-animals-auto-discovery,sponsored_products,auto,enabled,10,dynamic_down_only,2026-07-05,40,,,,,,,,,2026-07-05,2026-07-12,discovery phase week 1,harvest search terms at day 14,NgocETurnal
+ads-002,book-42,cute-farm-animals-ages-4-8,farm-animals-manual-exact,sponsored_products,manual_keyword_exact,paused,15,dynamic_down_only,2026-07-19,40,,,,,,,,,2026-07-19,2026-07-26,awaiting week-2 harvest from ads-001,launch after harvest approved,

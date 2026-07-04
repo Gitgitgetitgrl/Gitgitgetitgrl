@@ -49,6 +49,8 @@ graph TD
     L2 --> META["Metadata/Listing Agent"]
     L3 --> ASM["Listing Assembler"]
     L3 --> UP["Upload Agent"]
+    L3 --> ADA["Ada — Ads Campaign Agent"]
+    L1 -.trend research feed.-> ADA
 ```
 
 ## Role agents mapped to levels
@@ -66,6 +68,7 @@ graph TD
 | File QA Agent | 2 | Validates cover/interior file consistency |
 | Listing Assembler | 3 | Compiles final KDP listing packet |
 | Upload Agent | 3 | Saves draft or publishes **after human approval** |
+| **Ads Campaign Agent ("Ada")** | 3 | Plans/optimizes Amazon Ads post-launch; consumes Level 1 trend research to stay current; never spends without owner approval — see [`../ads/AGENT.md`](../ads/AGENT.md) |
 
 ## Gen can set up the project
 

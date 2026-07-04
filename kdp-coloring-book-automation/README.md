@@ -40,6 +40,7 @@ pytest validation/test_validate.py -q
 | Path | What it is |
 |------|-----------|
 | `docs/` | Parts 1–3.5, print guidelines, operation handbook, hosting/setup |
+| `ads/` | **Ada, the Ads Campaign Agent**: persona/system prompt, ads knowledge base + dated trend notes, campaign tracker template, weekly review tool |
 | `apps_script/kdp_master_automation.gs` | Google Sheets automation (dropdowns, error log, alerts, checkpoints, self-tests) |
 | `validation/` | Pre-upload 4-layer CSV validator + `rules.yaml` + tests |
 | `image_pipeline/` | Art generation adapter, bleed rule, interior-PDF builder, handoff packet |

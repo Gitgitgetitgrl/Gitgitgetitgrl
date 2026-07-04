@@ -1,0 +1,18 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Generated book assets & scratch (never commit produced art/PDFs or private data)
+work/
+assets/
+*.pdf
+!manual/KDP-Operation-Manual.pdf     # the committed operator manual is allowed
+
+# Built manual intermediate
+manual/operation-manual.html
+
+# Secrets / credentials (image API keys, KDP/Google creds)
+.env
+*credentials*.json
+*service-account*.json

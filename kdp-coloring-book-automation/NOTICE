@@ -1,0 +1,14 @@
+KDP Coloring-Book Production Automation
+Copyright 2026 Gitgitgetitgrl
+
+This product is licensed under the Apache License, Version 2.0 (see the LICENSE file).
+
+This license applies to the automation code, scripts, and documentation in this
+subproject only. It does NOT cover:
+  - the books, cover/interior art, or metadata you produce with it,
+  - any third-party image-generation model or API you connect,
+  - or Amazon KDP's platform, review process, and content policies.
+
+You remain responsible for content rights and compliance with KDP policy. This
+project prepares files and metadata; it does not bypass Amazon's review, and it
+never publishes without explicit human approval.

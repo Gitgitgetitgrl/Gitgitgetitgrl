@@ -1,0 +1,61 @@
+# Centralized KDP validation rules — single source of truth for validate_csv.py.
+# Edit values here (not in code) as KDP policy or your finalized specs change.
+
+# --- Required columns (file-level layer) ---
+required_columns:
+  - task_id
+  - book_slug
+  - title
+  - subtitle
+  - description
+  - keyword_1
+  - keyword_2
+  - keyword_3
+  - keyword_4
+  - keyword_5
+  - keyword_6
+  - keyword_7
+  - category_1
+  - category_2
+  - trim_size
+  - page_count
+  - bleed
+  - paper_type
+  - cover_file
+  - interior_file
+  - approval_status
+  - version
+
+# --- File-level ---
+file:
+  encoding: utf-8
+  delimiter: ","
+  allow_duplicate_columns: false
+
+# --- Field-level formats / limits (KDP metadata rules) ---
+fields:
+  title_max_len: 200          # KDP title character limit
+  subtitle_max_len: 200       # KDP subtitle character limit
+  description_max_len: 4000    # KDP description character limit
+  keyword_count: 7             # exactly 7 keyword slots
+  keyword_max_len: 50          # per-keyword length guard
+  keywords_unique: true        # no duplicate keywords
+  category_count: 2            # exactly 2 categories
+  min_page_count: 24           # KDP paperback minimum interior pages
+  max_page_count: 828          # KDP paperback maximum (white/cream dependent)
+
+# --- Controlled vocabularies (must match templates/LISTS.csv) ---
+enums:
+  trim_size: ["8.5x11", "8x10", "8.5x8.5", "8.25x8.25", "6x9"]
+  bleed: ["bleed", "no_bleed"]
+  paper_type: ["white", "cream", "color"]
+  approval_status: ["Draft", "Review", "Approved", "Rejected", "Archived"]
+
+# --- Final gate (only rows passing this may enter META_APPROVED) ---
+final_gate:
+  required_status: "Approved"
+  require_version: true
+  version_is_integer: true
+  # File existence is only enforced when --check-files is passed (paths are
+  # relative to --assets-root), since paths may not resolve in every environment.
+  require_files_exist: false

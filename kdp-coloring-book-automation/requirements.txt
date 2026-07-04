@@ -1,0 +1,6 @@
+# Full KDP automation dependencies (validation + image pipeline).
+pandas==2.2.3
+PyYAML==6.0.2
+jsonschema==4.23.0
+pytest==8.3.4
+Pillow==11.0.0

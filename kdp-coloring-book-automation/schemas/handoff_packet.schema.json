@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kdp-automation/schemas/handoff_packet.schema.json",
+  "title": "KDP Handoff Packet",
+  "description": "Packet passed between agent teams at each gated stage (Part 1). Always pass the full packet forward; increment version on any change; event_log is append-only; verify sha256 on receipt.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["packet_version", "task_id", "book_slug", "stage", "from_team", "to_team", "handoff_type", "artifact", "event_log"],
+  "properties": {
+    "packet_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+$",
+      "description": "Semantic packet version, incremented on any change."
+    },
+    "task_id": { "type": "string", "minLength": 1 },
+    "book_slug": { "type": "string", "minLength": 1 },
+    "stage": {
+      "type": "string",
+      "enum": ["Research", "Metadata", "Compliance", "QA", "Listing", "Approval", "Upload", "PostLaunch"]
+    },
+    "from_team": { "type": "string", "minLength": 1 },
+    "to_team": { "type": "string", "minLength": 1 },
+    "handoff_type": {
+      "type": "string",
+      "enum": ["NORMAL", "RETRY", "ESCALATION"],
+      "description": "RETRY = resubmission after fix; ESCALATION = Dalton has involved the business owner."
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "type", "size_bytes", "sha256"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "type": { "type": "string", "enum": ["ZIP", "PDF", "PNG", "TIFF", "CSV", "JSON"] },
+        "size_bytes": { "type": "integer", "minimum": 0 },
+        "sha256": { "type": "string", "pattern": "^[a-fA-F0-9]{6,64}$" }
+      }
+    },
+    "event_log": {
+      "type": "array",
+      "description": "Append-only audit trail; each stage appends one entry.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["ts", "team", "action"],
+        "properties": {
+          "ts": { "type": "string", "format": "date-time" },
+          "team": { "type": "string" },
+          "action": { "type": "string" },
+          "note": { "type": "string" }
+        }
+      }
+    }
+  }
+}

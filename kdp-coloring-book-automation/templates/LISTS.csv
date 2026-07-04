@@ -1,0 +1,16 @@
+list_name,value
+approval_status,Draft
+approval_status,Review
+approval_status,Approved
+approval_status,Rejected
+approval_status,Archived
+bleed,bleed
+bleed,no_bleed
+paper_type,white
+paper_type,cream
+paper_type,color
+trim_size,8.5x11
+trim_size,8x10
+trim_size,8.5x8.5
+trim_size,8.25x8.25
+trim_size,6x9

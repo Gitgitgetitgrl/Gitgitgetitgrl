@@ -16,3 +16,7 @@ manual/operation-manual.html
 .env
 *credentials*.json
 *service-account*.json
+
+# Live ad-campaign data (real spend/sales figures stay local)
+ads/AD_CAMPAIGNS.live.csv
+ads/*.live.csv

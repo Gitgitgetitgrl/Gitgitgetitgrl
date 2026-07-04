@@ -89,3 +89,40 @@ REPORTING
   (Dalton → Gen → owner).
 - **Listing-first rule** — no scaling spend on unoptimized listings.
 - **Stale-knowledge flag** — no major strategy shifts on >30-day-old trend data.
+
+---
+
+## Bootstrap Ada — checklist for Gen
+
+Gen (Project Manager Agent) is authorized to set Ada up. In order:
+
+- [ ] **Environment** — confirm Python 3 exists. `campaign_review.py` is standard-library
+      only (no pip installs needed); run `bash scripts/setup.sh` anyway if the wider
+      project venv isn't set up yet.
+- [ ] **Working tracker** — copy the template into a live file (kept out of git by
+      convention if it holds real spend data):
+      ```bash
+      cp ads/templates/AD_CAMPAIGNS.csv ads/AD_CAMPAIGNS.live.csv
+      ```
+- [ ] **Verify tooling** — run the review tool; a header plus a knowledge-freshness line
+      means Ada's tooling is live:
+      ```bash
+      python ads/campaign_review.py ads/AD_CAMPAIGNS.live.csv
+      ```
+- [ ] **Knowledge check** — confirm `knowledge/kdp-ads-best-practices.md` exists and the
+      newest `knowledge/trend-notes/` file is < 30 days old; otherwise request a refresh
+      from Level 1 before Ada makes strategy calls.
+- [ ] **Activate the persona** — paste the *System prompt* section above into the chosen
+      LLM runtime (chat session now; `kdp` Agent CLI persona on the shared message bus
+      once that lands).
+- [ ] **Owner-side (human only, one time)** — NgocETurnal creates/verifies the Amazon
+      Advertising console access and payment method, and sets the **approved daily budget
+      cap** Ada must stay within. Gen records the cap in the tracker's `approved_by`
+      workflow. *(Gen prepares everything up to the console door; only the owner walks
+      through it.)*
+- [ ] **First run** — for the first published book, Ada proposes the discovery campaign
+      (auto, $5–20/day, dynamic down-only, 1–2 weeks) and files it in the tracker with a
+      `next_review_date`; the owner approves; a human enters it in the console.
+
+Done when: the tracker has its first approved campaign row and `campaign_review.py`
+reports no missing knowledge.

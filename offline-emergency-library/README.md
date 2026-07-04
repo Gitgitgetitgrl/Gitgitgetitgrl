@@ -97,7 +97,8 @@ trained clinician. See the disclaimer in [`docs/operation-manual.md`](docs/opera
 ## License
 
 The **code, scripts, and documentation in this repository** are licensed under the
-[MIT License](LICENSE).
+[Apache License 2.0](LICENSE) (see also [`NOTICE`](NOTICE)). Apache-2.0 is permissive like
+MIT but adds an explicit patent grant and patent-retaliation protection.
 
 This does **not** cover the third-party **content you download** at build time (Wikipedia,
 `.zim` libraries, PDFs, models, media, etc.) — each of those keeps its own license, and you

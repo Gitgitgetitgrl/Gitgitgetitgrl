@@ -1,0 +1,10 @@
+ROM — Offline Emergency Resource Library
+Copyright 2026 Gitgitgetitgrl
+
+This product is licensed under the Apache License, Version 2.0 (see the LICENSE file).
+
+This license applies to the code, scripts, and documentation in this repository only.
+It does NOT cover third-party content that a user downloads at build time (for example
+Wikipedia and other .zim libraries, PDFs, language models, and media). Each of those
+retains its own license and must be complied with separately. See
+docs/04-licensing-and-legal.md for details.

@@ -93,3 +93,13 @@ Rom labels medical information as **clinical evidence** vs. **traditional/holist
 practice**, and is instructed to tell you when a situation is beyond self-care and needs
 a professional or emergency responder. It is a reference aid, **not** a substitute for a
 trained clinician. See the disclaimer in [`docs/operation-manual.md`](docs/operation-manual.md).
+
+## License
+
+The **code, scripts, and documentation in this repository** are licensed under the
+[MIT License](LICENSE).
+
+This does **not** cover the third-party **content you download** at build time (Wikipedia,
+`.zim` libraries, PDFs, models, media, etc.) — each of those keeps its own license, and you
+must respect it, especially if you redistribute a built device. See
+[`docs/04-licensing-and-legal.md`](docs/04-licensing-and-legal.md).

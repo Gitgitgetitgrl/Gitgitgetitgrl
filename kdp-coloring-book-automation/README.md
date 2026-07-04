@@ -1,9 +1,10 @@
 # KDP Coloring-Book Production Automation
 
 A gated, human-approved pipeline that turns a coloring-book concept into **print-ready files +
-validated metadata** for Amazon KDP. An AI agent team (orchestrated by Dalton, reporting to
-the owner) drafts, generates, checks, and assembles — **nothing publishes without human
-approval.**
+validated metadata** for Amazon KDP. Chain of command: **Owner (NgocETurnal) → Gen
+(Project Manager Agent) → Dalton (Team Manager) → three production levels** (1 research,
+2 production, 3 upload staging). The agents draft, generate, check, and assemble —
+**nothing publishes without human approval.**
 
 > **Separate from ROM.** This project is independent of the `offline-emergency-library/` (ROM)
 > project — no shared code. They can share the *same mini-PC* as isolated tools; see
@@ -55,6 +56,7 @@ pytest validation/test_validate.py -q
 - [`docs/03.5-preupload-validation.md`](docs/03.5-preupload-validation.md) — the 4-layer validator
 - [`docs/print-guidelines.md`](docs/print-guidelines.md) — trim/bleed/DPI/margins
 - [`docs/operation-handbook.md`](docs/operation-handbook.md) — end-to-end flow
+- [`docs/06-infrastructure-roadmap.md`](docs/06-infrastructure-roadmap.md) — the Complete Manual's foundation (Cloud Run, alerting, KDP Agent CLI, FastEmbed) and how this build layers on it
 - [`docs/hosting-and-setup.md`](docs/hosting-and-setup.md) — running KDP + ROM on one mini-PC
 
 Build the manual PDF: `bash scripts/build_manual_pdf.sh` → `manual/KDP-Operation-Manual.pdf`.

@@ -6,12 +6,14 @@ QA/Compliance → Listing → Approval → Upload.**
 
 ## The flow
 
-1. **Trend/Product Strategy** (Part 1) — pick concept and priority tier
-   (adult sarcastic/gift → kids → wellness).
-2. **Project setup** — if starting from nothing, **Gen bootstraps the project**:
-   `scripts/setup.sh`, create the book work folders, initialize the tracking sheet from
-   `templates/`. (See "Gen can set up the project" in
-   [`01-team-roles-and-workflow.md`](01-team-roles-and-workflow.md).)
+1. **Trend/Product Strategy** (Level 1 — Research & Planning) — pick concept and priority
+   tier. **Priority is sales-driven and fluid** — currently kids → adult gift/sarcastic →
+   wellness (see [print-guidelines](print-guidelines.md)).
+2. **Project setup** — if starting from nothing, **Gen (Project Manager Agent) bootstraps
+   the project**: `scripts/setup.sh`, create the book work folders, initialize the tracking
+   sheet from `templates/`. (See "Gen can set up the project" in
+   [`01-team-roles-and-workflow.md`](01-team-roles-and-workflow.md). Chain of command:
+   Owner NgocETurnal → Gen → Dalton → Levels 1/2/3.)
 3. **Metadata Draft** (Part 2) — log the task in META_DRAFT, get a `task_id`.
 4. **Image Generation** (Part 3) — Gen produces art per the finalized spec, applies the bleed
    rule, hands off with a checksum packet.

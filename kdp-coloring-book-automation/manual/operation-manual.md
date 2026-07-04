@@ -9,8 +9,10 @@ pre-upload validation into one repeatable flow.
 ## 1. What this does
 
 It turns a book concept into **print-ready files + validated metadata** for Amazon KDP, with
-a **human-approval gate** before anything is published. The AI agent team (led by Dalton,
-reporting to you, the owner) drafts, generates, checks, and assembles — you approve.
+a **human-approval gate** before anything is published. The chain of command: **you
+(NgocETurnal, Project Owner) → Gen (Project Manager Agent) → Dalton (Team Manager) →
+the three production levels** (Level 1 research & planning, Level 2 production, Level 3
+upload staging). The agents draft, generate, check, and assemble — you approve.
 
 ## 2. One-time setup
 
